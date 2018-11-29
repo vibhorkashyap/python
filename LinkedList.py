@@ -26,14 +26,6 @@ class LinkedList(object):
                 temp = temp.next
             temp.next = Node
 
-    def deleteItem(self,num):
-        temp = self.head
-        while (temp.next.data != num):
-            temp = temp.next
-        delnode = temp.next
-        del(delnode)  
-        temp.next = temp.next.next
-
     def deleteHead(self):
         if self.head is None :
             return None
@@ -44,7 +36,6 @@ class LinkedList(object):
             self.head = temp.next
             temp = None
 
-
     def deleteTail(self):
         temp = self.head
         if temp.next is None:
@@ -54,7 +45,6 @@ class LinkedList(object):
                 temp = temp.next
             temp.next.next = None
             temp.next = None
-
 
     def printList(self):
         temp = self.head
