@@ -26,6 +26,19 @@ class LinkedList(object):
                 temp = temp.next
             temp.next = Node
 
+    def deleteByValue(self,value):
+        temp = self.head
+        if value == self.head.data:
+            return None
+        else:
+            while(temp.next.data != value):
+                temp = temp.next
+            if temp.next != None:
+                temp.next = temp.next.next
+            else:
+                temp.next = None
+
+
     def deleteHead(self):
         if self.head is None :
             return None
@@ -36,6 +49,7 @@ class LinkedList(object):
             self.head = temp.next
             temp = None
 
+
     def deleteTail(self):
         temp = self.head
         if temp.next is None:
@@ -45,6 +59,7 @@ class LinkedList(object):
                 temp = temp.next
             temp.next.next = None
             temp.next = None
+
 
     def printList(self):
         temp = self.head
@@ -61,7 +76,7 @@ for i in range(10):
 LL.printList()
 print("###################")
 
-LL.deleteItem(4) #deletes 4
+LL.deleteByValue(7) #deletes 4
 LL.deleteTail() #deletes 9
 LL.deleteTail() #deletes 8
 LL.deleteHead() #deletes 0
