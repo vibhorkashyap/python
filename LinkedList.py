@@ -4,80 +4,57 @@ class Node(object):
         self.data = data
         self.next = None
 
-class LinkedList(object):
+class LinkedList():
 
     def __init__(self):
         self.head = None
 
-    def insertAtHead(self,Node):
+    def insertAtHead(self,data):
         if self.head is None:
-            self.head = Node
+            self.head = Node(data)
         else:
             temp = self.head
-            self.head = Node
+            self.head = Node(data)
             self.head.next = temp
 
-    def insertAtTail(self,Node):
+    def insertAtTail(self,data):
+
         if self.head is None:
-            self.head = Node
+            self.head = Node(data)
         else:
             temp = self.head
             while(temp.next):
                 temp = temp.next
-            temp.next = Node
+            temp.next = Node(data)
 
-    def deleteByValue(self,value):
-        temp = self.head
-        if value == self.head.data:
-            return None
-        else:
-            while(temp.next.data != value):
-                temp = temp.next
-            if temp.next != None:
-                temp.next = temp.next.next
-            else:
-                temp.next = None
+    def removeNode(self,value):
 
-
-    def deleteHead(self):
-        if self.head is None :
-            return None
-        elif self.head.next is None:
-            return None
-        else:
-            temp = self.head
-            self.head = temp.next
-            temp = None
-
-
-    def deleteTail(self):
-        temp = self.head
-        if temp.next is None:
-            return temp
-        else:
-            while(temp.next.next != None):
-                temp = temp.next
-            temp.next.next = None
-            temp.next = None
+        prev = None
+        curr = self.head
+        while curr:
+            if curr.data == value:
+                if prev:
+                    prev.next = curr.next
+                else:
+                    self.head = curr.next
+                return True
+                    
+            prev = curr
+            curr = curr.next
+            
+        return False
 
 
     def printList(self):
         temp = self.head
-        while(temp):
-            print (temp.data)
+        while (temp):
+            print(temp.data)
             temp = temp.next
-       
 
-
-LL = LinkedList()
-for i in range(10):
-    LL.insertAtTail(Node(i))
-
-LL.printList()
-print("###################")
-
-LL.deleteByValue(7) #deletes 4
-LL.deleteTail() #deletes 9
-LL.deleteTail() #deletes 8
-LL.deleteHead() #deletes 0
-LL.printList()
+L = LinkedList()
+L.insertAtHead(1)
+L.insertAtTail(2)
+L.insertAtTail(3)
+L.insertAtHead(4)
+L.removeNode(3)
+L.printList()
