@@ -1,0 +1,45 @@
+import time
+
+def timeit(method):
+    def timed(*args, **kw):
+        ts = time.time()
+        result = method(*args, **kw)
+        te = time.time()
+        if 'log_time' in kw:
+            name = kw.get('log_name', method.__name__.upper())
+            kw['log_time'][name] = int((te - ts) * 1000)
+        else:
+            print '%r  %2.2f ms' % \
+                  (method.__name__, (te - ts) * 1000)
+        return result
+    return timed
+
+@timeit
+def linearSearch(A,key):
+    start = time.time()
+    low = 0
+    while low <= len(A):
+        if A[low] == key:
+            return low
+        low += 1
+    return False
+
+@timeit
+def binarySearch(A,key):
+    n = len(A)
+    low = 0
+    high = n
+    while (low <= high):
+        mid = (low+high)/2
+        if key == A[mid]:
+            return mid
+        elif key < A[mid]:
+            high = mid - 1
+        else:
+            low = mid + 1
+    return False
+
+arr = [x for x in range (5000)]
+
+print (binarySearch(arr,3400))
+print (linearSearch(arr,3400))
