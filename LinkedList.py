@@ -1,4 +1,4 @@
-class Node(object):
+class Node():
 
     def __init__(self,data):
         self.data = data
@@ -13,48 +13,60 @@ class LinkedList():
         if self.head is None:
             self.head = Node(data)
         else:
-            temp = self.head
-            self.head = Node(data)
-            self.head.next = temp
+            newNode = Node(data)
+            newNode.next = self.head
+            self.head = newNode
+            
 
-    def insertAtTail(self,data):
-
+    def insertAtTail(self, data):
         if self.head is None:
             self.head = Node(data)
         else:
-            temp = self.head
-            while(temp.next):
-                temp = temp.next
-            temp.next = Node(data)
+            curr = self.head
+            while curr.next:
+                curr = curr.next
+            curr.next = Node(data)
 
-    def removeNode(self,value):
+    def printList(self):
+        arr = []
+        curr = self.head
+        while curr.next:
+            arr.append(curr.data)
+            curr = curr.next
+        arr.append(curr.data)
+        print arr
 
+    def removeNode(self,data):
         prev = None
         curr = self.head
         while curr:
-            if curr.data == value:
+            if curr.data == data:
                 if prev:
                     prev.next = curr.next
                 else:
                     self.head = curr.next
                 return True
-                    
             prev = curr
             curr = curr.next
-            
         return False
 
+    def reverseList(self):
+        prev = None
+        curr = self.head
+        nex  = curr.next
+        while curr:
+            curr.next = prev
+            prev = curr
+            curr = nex
+            if nex:
+                nex = nex.next
+        self.head = prev
 
-    def printList(self):
-        temp = self.head
-        while (temp):
-            print(temp.data)
-            temp = temp.next
-
-L = LinkedList()
-L.insertAtHead(1)
-L.insertAtTail(2)
-L.insertAtTail(3)
-L.insertAtHead(4)
-L.removeNode(3)
-L.printList()
+LL = LinkedList()
+for i in range(1,5):
+    LL.insertAtTail(i)
+LL.printList()
+LL.removeNode(3)
+LL.printList()
+LL.reverseList()
+LL.printList()
