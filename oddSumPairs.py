@@ -1,0 +1,50 @@
+#sample input
+A = [2,3,6,1,7,4]
+
+
+#method to check if a pair of numbers has an odd sum
+def is_odd_pair(a,b):
+    if (a+b)%2==0:
+        return False
+    else:
+        return True
+        
+        
+#method to find unique odd-sum pairs in a list
+def find_odd_pairs(A):
+    pairslist = []
+    for i in range(len(A)):
+        for j in range(len(A)):
+            if i==j:
+                continue
+            if is_odd_pair(A[i],A[j]):
+                pairslist.append((A[i],A[j]))
+    pairslist = [tuple(x) for x in set(map(frozenset, pairslist))]
+    return pairslist
+
+
+#method to check if a given list (of length N an even number) has unique odd-sum pairs
+def has_unique_odd_sum_pairs(A):
+    pairs = find_odd_pairs(A)
+    for i in pairs:
+        paircheck = []
+        paircheck.append(i[0])
+        paircheck.append(i[1])
+        for j in pairs:
+            if i[0]==j[0] or i[0]==j[1] or i[1]==j[0] or i[1]==j[1]:
+                continue
+            paircheck.append(j[0])
+            paircheck.append(j[1])
+        if set(paircheck) == set(A):
+            return True
+    return False
+
+print(has_unique_odd_sum_pairs(A))
+
+                
+
+
+
+            
+
+
