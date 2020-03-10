@@ -39,7 +39,40 @@ def has_unique_odd_sum_pairs(A):
             return True
     return False
 
-print(has_unique_odd_sum_pairs(A))
+
+#method to test the list unique odd sum pairs method on 100 samples
+def test_driver():
+    from random import seed
+    from random import randint
+    # seed random number generator
+    seed(42)
+    for _ in range(1,100):
+        testlist = []
+        random_even = sum(randint(1, 100) % 2 == 0 for _ in range(2, 20))
+        for __ in range(random_even):
+            testlist.append(randint(1,100))
+        print("Input List : {} Has odd sum pairs : {}".format(testlist,list_unique_odd_sum_pairs(testlist)))
+
+def main():
+    test_driver()
+
+if __name__ == "__main__":
+    main()
+
+
+
+
+
+
+
+                
+
+
+
+            
+
+
+
 
                 
 
