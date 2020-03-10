@@ -50,7 +50,7 @@ def test_driver():
         random_even = random.randrange(2, 11, 2)
         for __ in range(random_even):
             testlist.append(randint(1,100))
-        print("Input List : {} || Has odd sum pairs : {}".format(testlist,list_unique_odd_sum_pairs(testlist)))
+        print("Input List : {} || Has odd sum pairs : {}".format(testlist,has_unique_odd_sum_pairs(testlist)))
 
 def main():
     test_driver()
