@@ -1,6 +1,4 @@
-#sample input
-A = [2,3,6,1,7,4]
-
+# Check if a list of even length has possible pairs such that the sum of each pair is an odd number
 
 #method to check if a pair of numbers has an odd sum
 def is_odd_pair(a,b):
