@@ -47,18 +47,33 @@ def test_driver():
     seed(42)
     for _ in range(1,100):
         testlist = []
-        random_even = random.randrange(2, 20, 2)
+        random_even = random.randrange(2, 10, 2)
         for __ in range(random_even):
             testlist.append(randint(1,100))
-        print("Input List : {} Has odd sum pairs : {}".format(testlist,list_unique_odd_sum_pairs(testlist)))
-        
+        print("Input List : {} || Has odd sum pairs : {} || Odd pairs : {}".format(testlist,list_unique_odd_sum_pairs(testlist),find_odd_pairs(testlist)))
 
+        
 def main():
     test_driver()
-    
 
+    
 if __name__ == "__main__":
     main()
+
+
+
+
+
+
+
+                
+
+
+
+            
+
+
+
 
 
 
